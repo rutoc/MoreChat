@@ -1,0 +1,78 @@
+name: MoreChat
+main: net.MoreCraft.MoreChat.MoreChat
+version: "4.9"
+author: JohnnyPlayy
+description: plugin de Chat
+
+commands:
+  morechat:
+    aliases: [chat]
+  mute:
+    usage: /Mute
+  global:
+    usage: /g
+    aliases: [g]
+  information:
+    usage: /information
+    aliases: [ajuda]
+  private:
+    usage: /private
+    aliases: [pm, msg, tell]
+  chatserver:
+    usage: /ChatServer
+    aliases: [cserver]
+  chatstaff:
+    usage: /ChatStaff
+    aliases: [staff, s]
+  youtube:
+    usage: /YouTube
+    aliases: [yt]
+  warning:
+    usage: /Warning
+    aliases: [w]
+
+permissions:
+    MoreChat.User.*:
+        default: op
+    MoreChat.User.Chat.Control:
+        default: op
+    MoreChat.User.Chat.Color:
+        default: op
+    MoreChat.User.Chat.Global:
+        default: op
+    MoreChat.User.Chat.Info:
+        default: op
+    MoreChat.User.Chat.Private:
+        default: op
+    MoreChat.User.Chat.Spy:
+        default: op
+    MoreChat.User.Chat.Staff:
+        default: op
+    MoreChat.User.Chat.YouTube:
+        default: op
+    MoreChat.User.Chat.Warning:
+        default: op
+    MoreChat.User.Chat.Ip.Ignore:
+        default: op
+    MoreChat.User.Chat.URL.Ignore:
+        default: op
+    MoreChat.User.Chat.CapsLock:
+        default: op
+    MoreChat.User.Chat.Disable:
+        default: op
+    MoreChat.User.Chat.Disable.Ignore:
+        default: op
+    MoreChat.User.Chat.Mute:
+        default: op
+    MoreChat.User.Chat.Mute.Ignore:
+        default: op
+    MoreChat.User.Chat.Spam:
+        default: op
+    MoreChat.User.Chat.Wearing.Ignore:
+        default: op
+    MoreChat.User.Chat.Help.Admin:
+        default: op
+    MoreChat.User.Chat.Clear:
+        default: op
+    MoreChat.User.Reload:
+        default: op
