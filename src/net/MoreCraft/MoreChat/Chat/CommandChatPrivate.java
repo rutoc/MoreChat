@@ -24,17 +24,22 @@ public class CommandChatPrivate implements CommandExecutor {
 		}
 		
 		Player player = (Player) sender;
+		
 		if (cmd.getName().equalsIgnoreCase("private")) {
 			if (!player.hasPermission("MoreChat.User.Chat.Private")) {
+				
 				Messaging.Sender(sender, "&cYou don't have permissions!");
 				return true;
 			}
 			
 			StringBuilder x = new StringBuilder();
+			
 			int i;
+			
 			for (i = 1; i < args.length; i++) {
+				
 				x.append(args[i] + " ");
-				}
+			}
 			
 			if (args.length > 1) {
 				
@@ -43,19 +48,22 @@ public class CommandChatPrivate implements CommandExecutor {
 				plugin.ColorMessagePrivate = plugin.getConfig().getString("Chat.Private.Color.Message").replace("&", "§");
 				//Config End
 				Player target = User.getPlayer(args[0]);
+				
 				if (target != null) {
+					
 					Messaging.Sender(player, plugin.ColorNamePrivate + "[Você -> " + target.getDisplayName() + ""+ ChatColor.GRAY +"] " + plugin.ColorMessagePrivate + x.toString().trim());
 					Messaging.Sender(target, plugin.ColorNamePrivate + "[" + player.getDisplayName() + ""+ ChatColor.GRAY +" -> Você] " + plugin.ColorMessagePrivate + x.toString().trim());
 					return true;
 					
 					} else {
+						
 						Messaging.Sender(player.getName(), "&cOops, player not found!");
 						return true;
 					}
 				}
 			}
-		Messaging.Sender(player, "&cError");
-		Messaging.Sender(player, "&cUse: /" + commandLabel + " <player> <message>");
-		return true;
+			Messaging.Sender(player, "&cError");
+			Messaging.Sender(player, "&cUse: /" + commandLabel + " <player> <message>");
+			return true;
+		}
 	}
-}

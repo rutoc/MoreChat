@@ -71,18 +71,23 @@ public class MoreChat extends JavaPlugin {
     }
     
 	public String getPrefix(Player player) {
+		
 		String Prefix = getChat().getPlayerPrefix(player);
+		
 		Prefix = Colorizer.parseColors(Prefix);
 		return Prefix;
 	}
 
 	public String getSuffix(Player player) {
+		
 		String Suffix = getChat().getPlayerSuffix(player);
+		
 		Suffix = Colorizer.parseColors(Suffix);
 		return Suffix;
 	}
     
     public void getRegister() {
+    	
     	PluginManager Register = getServer().getPluginManager();
     	Register.registerEvents(new ChatBlocker(this), this);
     	Register.registerEvents(new ChatCapsLock(this), this);
@@ -113,13 +118,13 @@ public class MoreChat extends JavaPlugin {
         getConfig().addDefault("Chat.Local.Range", 50);
         getConfig().addDefault("Chat.Local.NotifyRange", true);
         getConfig().addDefault("Chat.Local.Message", "&cThere is no one here...");
-        getConfig().addDefault("Chat.Local.Format", "[Prefix][Name][Suffix]&8: &e[MsgColor]");
-        getConfig().addDefault("Chat.Global.Format", "&7[(]&a&lG&7[)][Prefix][Name][Suffix]&8: &7[MsgColor]");
-        getConfig().addDefault("Chat.Info.Format", "&7[(]&b&lI&7[)]&f[Name]&8: &b[Msg]");
+        getConfig().addDefault("Chat.Local.Format", "[Prefix][Name][Suffix]&8 � &e[MsgColor]");
+        getConfig().addDefault("Chat.Global.Format", "&7[(]&a&lG&7[)][Prefix][Name][Suffix]&8 � &7[MsgColor]");
+        getConfig().addDefault("Chat.Info.Format", "&7[(]&b&lI&7[)]&f[Name]&8 � &b[Msg]");
         getConfig().addDefault("Chat.Warning.Format", "&7[(]&e&lWarning&7[)]&7[Msg]");
-        getConfig().addDefault("Chat.YouTube.Format", "&7[(]&f&lYou&c&lTube&7[)]&f[Name]&8: &7[MsgColor]");
+        getConfig().addDefault("Chat.YouTube.Format", "&7[(]&f&lYou&c&lTube&7[)]&f[Name]&8 � &7[MsgColor]");
         getConfig().addDefault("Chat.Server.Format", "&7[(]&f&lServer&7[)]&7[Msg]");
-        getConfig().addDefault("Chat.Staff.Format", "&7[(]&c&lS&7[)]&7[Name]&8: &e[Msg]");
+        getConfig().addDefault("Chat.Staff.Format", "&7[(]&c&lS&7[)]&7[Name]&8 � &e[Msg]");
         //getConfig().addDefault("Chat.Private.Format", "&7[VocÃª -> [Name]] [Msg]");
         getConfig().addDefault("Chat.Private.Color.Name", "&7");
         getConfig().addDefault("Chat.Private.Color.Message", "&7");

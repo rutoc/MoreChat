@@ -22,26 +22,22 @@ public class CommandChatWarning implements CommandExecutor {
         	Logger.info("ERROR: Command used only in-game!");
             return true;
         }
+        
         Player player = (Player) sender;
+        
 		if(sender.hasPermission("MoreChat.User.Chat.Warning")){
 			if(cmd.getName().equalsIgnoreCase("warning")) {
+				
 				if(args.length == 0) {
+					
 					Messaging.Sender(player.getName(), "&cError");
 					Messaging.Sender(player.getName(), "&cUse: /" + commandLabel + " <message>");
 					return true;
 	    		}
-				
-	    		plugin.WarningFormat = plugin.getConfig().getString("Chat.Warning.Format");
-	    		plugin.WarningFormat = plugin.WarningFormat.replace("&", "§");
-				plugin.WarningFormat = plugin.WarningFormat.replace("[(]", "【");
-				plugin.WarningFormat = plugin.WarningFormat.replace("[)]", "】");
-	    		plugin.WarningFormat = plugin.WarningFormat.replace("[Name]", player.getName());
-	    		plugin.WarningFormat = plugin.WarningFormat.replace("[DisplayName]", player.getDisplayName());
-	    		plugin.WarningFormat = plugin.WarningFormat.replace("[Msg]", Util.getFinalArg(args, 0, 1));
-	    		plugin.WarningFormat = plugin.WarningFormat.replace("[MsgColor]", Colorizer.parseColors(Util.getFinalArg(args, 0, 1)));
-	    		plugin.WarningFormat = plugin.WarningFormat.replace("[Prefix]", plugin.getPrefix(player));
-	    		plugin.WarningFormat = plugin.WarningFormat.replace("[Suffix]", plugin.getSuffix(player));
-	    		User.broadcastMessage(plugin.WarningFormat);
+	    		
+				String format = plugin.getConfig().getString("Chat.Warning.Format");
+
+				User.broadcastMessage(Variable.Format(player, format, args));
 	    		return true;
 			}
 		}

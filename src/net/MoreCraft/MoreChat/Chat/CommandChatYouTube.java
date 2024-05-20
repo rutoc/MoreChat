@@ -22,27 +22,22 @@ public class CommandChatYouTube implements CommandExecutor {
         	Logger.info("ERROR: Command used only in-game!");
             return true;
         }
+        
         Player player = (Player) sender;
+        
 		if(sender.hasPermission("MoreChat.User.Chat.YouTube")){
 			if(cmd.getName().equalsIgnoreCase("youtube")) {
+				
 				if(args.length == 0) {
+					
 					Messaging.Sender(player.getName(), "&cError");
 					Messaging.Sender(player.getName(), "&cUse: /" + commandLabel + " <message>");
 					return true;
 	    		}
-				
-	    		plugin.YouTubeFormat = plugin.getConfig().getString("Chat.YouTube.Format");
-	    		plugin.YouTubeFormat = plugin.YouTubeFormat.replace("&", "§");
-				plugin.YouTubeFormat = plugin.YouTubeFormat.replace("[(]", "【");
-				plugin.YouTubeFormat = plugin.YouTubeFormat.replace("[)]", "】");
-	    			
-	    		plugin.YouTubeFormat = plugin.YouTubeFormat.replace("[Name]", player.getName());
-	    		plugin.YouTubeFormat = plugin.YouTubeFormat.replace("[DisplayName]", player.getDisplayName());
-	    		plugin.YouTubeFormat = plugin.YouTubeFormat.replace("[Msg]", Colorizer.parseColors(Util.getFinalArg(args, 0, 1)));
-	    		plugin.YouTubeFormat = plugin.YouTubeFormat.replace("[MsgColor]", Colorizer.parseColors(Util.getFinalArg(args, 0, 1)));
-	    		plugin.YouTubeFormat = plugin.YouTubeFormat.replace("[Prefix]", plugin.getPrefix(player));
-	    		plugin.YouTubeFormat = plugin.YouTubeFormat.replace("[Suffix]", plugin.getSuffix(player));
-	    		User.broadcastMessage(plugin.YouTubeFormat);
+	    		
+				String format = plugin.getConfig().getString("Chat.YouTube.Format");
+
+				User.broadcastMessage(Variable.Format(player, format, args));
 	    		return true;
 			}
 		}

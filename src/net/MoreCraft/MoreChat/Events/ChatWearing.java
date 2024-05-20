@@ -35,7 +35,9 @@ public class ChatWearing implements Listener {
 						event.setCancelled(plugin.getConfig().getBoolean("Chat.Blocker.Wearing.Action.Chat"));
 						
 					return true;
+					
 				} else {
+					
 					return true;
 				}
 			}
@@ -63,7 +65,9 @@ public class ChatWearing implements Listener {
 						event.setCancelled(plugin.getConfig().getBoolean("Chat.Blocker.Wearing.Action.Command"));
 						
 					return true;
+					
 				} else {
+					
 					return true;
 				}
 			}

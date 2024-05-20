@@ -54,11 +54,11 @@ public class CommandChatPrivateTest implements CommandExecutor {
 						return true;
 					}
 				}
-				Messaging.Sender(player.getName(), "&cEsse jogador nÃ£o pÃ´de ser encontrado");
+				Messaging.Sender(player.getName(), "&cThat player cannot be found!");
 				return true;
 			}
 		}
-		Messaging.Sender(sender, "&cVocÃª nÃ£o tem permissÃµes");
+		Messaging.Sender(sender, "&cYou don't have permissions!");
 		return true;
 	}
 }

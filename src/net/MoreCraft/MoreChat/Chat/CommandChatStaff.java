@@ -23,27 +23,22 @@ public class CommandChatStaff implements CommandExecutor {
         	Logger.info("ERROR: Command used only in-game!");
             return true;
         }
+        
         Player player = (Player) sender;
+        
         if(player.hasPermission("MoreChat.User.Chat.Staff")) {
         	if(cmd.getName().equalsIgnoreCase("chatstaff")) {
+        		
         		if(args.length == 0) {
+        			
 					Messaging.Sender(player.getName(), "&cError");
 					Messaging.Sender(player.getName(), "&cUse: /" + commandLabel + " <message>");
         			return true;
         		}
         		
-        		plugin.StaffFormat = plugin.getConfig().getString("Chat.Staff.Format");
-        		plugin.StaffFormat = plugin.StaffFormat.replace("&", "§");
-				plugin.StaffFormat = plugin.StaffFormat.replace("[(]", "【");
-				plugin.StaffFormat = plugin.StaffFormat.replace("[)]", "】");
-        		plugin.StaffFormat = plugin.StaffFormat.replace("[Name]", player.getName());
-        		plugin.StaffFormat = plugin.StaffFormat.replace("[DisplayName]", player.getDisplayName());
-        		plugin.StaffFormat = plugin.StaffFormat.replace("[Msg]", Util.getFinalArg(args, 0, 1));
-        		plugin.StaffFormat = plugin.StaffFormat.replace("[MsgColor]", Colorizer.parseColors(Util.getFinalArg(args, 0, 1)));
-        		plugin.StaffFormat = plugin.StaffFormat.replace("[Prefix]", plugin.getPrefix(player));
-        		plugin.StaffFormat = plugin.StaffFormat.replace("[Suffix]", plugin.getSuffix(player));
+				String format = plugin.getConfig().getString("Chat.Staff.Format");
         		
-        		sendStaff(player, plugin.StaffFormat);
+        		sendStaff(player, Variable.Format(player, format, args));
         		return true;
         	}
         }
@@ -52,10 +47,15 @@ public class CommandChatStaff implements CommandExecutor {
 	}
 	
 	public static int sendStaff(Player player, String message) {
+		
 		int i = 0;
+		
 		for (Player staff : Bukkit.getOnlinePlayers()) {
+			
 			if(staff.hasPermission("MoreChat.User.Chat.Staff")) {
+				
 				staff.sendMessage(message);
+				
 				i++;
 			}
 		}

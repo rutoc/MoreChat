@@ -43,6 +43,7 @@ public class ChatLocal implements Listener {
 		// Config End
 
 		for (Player p : new HashSet<Player>(event.getRecipients())) {
+			
 			if ((player.getWorld() != p.getWorld()) || (getRange(User.getPlayer(player.getName()), p.getLocation()))) {
 				event.getRecipients().remove(p);
 			}
@@ -51,16 +52,21 @@ public class ChatLocal implements Listener {
 		event.setFormat(plugin.LocalFormat);
 
 		if (event.getRecipients().size() == 1) {
-			if ((plugin.NotifyRange))
+			
+			if ((plugin.NotifyRange)) {
 				Messaging.Sender(player.getName(), plugin.MsgRange);
+			}
 			event.setCancelled(true);
 		}
 		return false;
 	}
 
 	private Boolean getRange(Player player, Location location) {
-		if (player.getLocation().equals(location))
+		
+		if (player.getLocation().equals(location)) {
 			return false;
+		}
+		
 		if (player.getLocation().distanceSquared(location) > plugin.ChatRange * 100) {
 			return true;
 		}

@@ -47,7 +47,7 @@ public class CommandChat implements CommandExecutor, TabCompleter {
 				Messaging.Sender(player, "&a/chat clear&f: &7Clears your chat;");
 				Messaging.Sender(player, "&a/chat admin&f: &7View all admin commands;");
 				Messaging.Sender(player, "&a/chat reload&f: &7Reload settings and database;");
-				Messaging.Sender(player, "&a/chat version&f: &7View the plugin version and authors;");
+				Messaging.Sender(player, "&a/chat version&f: &7View the plugin version and authors;!");
 				return true;
 			}
 
